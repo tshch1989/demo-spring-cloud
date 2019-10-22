@@ -5,7 +5,7 @@ server:
   port: 8061
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${server.port}
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
     hostname: localhost-1
     metadata-map:
       profile: test

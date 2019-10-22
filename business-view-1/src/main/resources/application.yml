@@ -7,7 +7,7 @@ server:
   port: 8081
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${server.port}
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
     hostname: localhost-1
     metadata-map:
       profile: test
@@ -44,10 +44,10 @@ spring:
     name: @name@
   profiles: business-view-2
 server:
-  port: 8081
+  port: 8082
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${server.port}
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
     hostname: localhost-2
   client:
     serviceUrl:

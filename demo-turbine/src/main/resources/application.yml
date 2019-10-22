@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: @name@
+server:
+  port: 8051
+eureka:
+  instance:
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+    hostname: localhost-1
+    metadata-map:
+      profile: test
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+info:
+  app.name: @name@
+  jdk.version: @java.version@
+  build.artifactId: @project.artifactId@
+  build.version: @project.version@
+turbine:
+  appConfig: BUSINESS-VIEW-1 #eureka中服务id
+  combine-host-port: true
+  aggregator:
+    cluster-config: BUSINESS-VIEW-1 #集群名字,默认使用appName属性
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
