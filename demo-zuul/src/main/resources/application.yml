@@ -1,0 +1,37 @@
+zuul:
+  routes:
+    business-view-1: /**
+spring:
+  application:
+    name: @name@
+server:
+  port: 8061
+eureka:
+  instance:
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+    hostname: localhost-1
+    metadata-map:
+      profile: test
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+info:
+  app.name: @name@
+  jdk.version: @java.version@
+  build.artifactId: @project.artifactId@
+  build.version: @project.version@
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+    hystrix:
+      stream:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"

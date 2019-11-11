@@ -16,7 +16,7 @@ public class HelloViewController {
 
     @GetMapping("/hello/echo")
     public String echo(@RequestParam String msg){
-        log.info("当前线程:"+Thread.currentThread().getId());
+        log.info("echo params {}", msg);
         String echo = helloService.echo(msg);
         return "Hello, " + echo +"!";
     }
