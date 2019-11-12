@@ -1,6 +1,7 @@
 zuul:
   routes:
     business-view-1: /**
+  ribbon-isolation-strategy: thread
 spring:
   application:
     name: @name@
